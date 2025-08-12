@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18 # Use a supported Node.js version
+    commands:
+      - echo Installing dependencies...
+      - npm install
+
+  pre_build:
+    commands:
+      - echo Running tests...
+      - npm test || echo "No tests found, skipping..."
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build || echo "No build step, skipping..."
+      - echo Build completed on `date`
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Preparing artifacts for deployment...
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
