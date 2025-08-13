@@ -13,6 +13,7 @@ app.get("/", (req: any, res: any) => {
   return res.send("Everything is working fine");
 });
 
+//fetching the data from the API: 
 app.get("/api/v1/users", async (req:any, res: any)=>{
     const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${1}`)
     return res.send(response.data)
